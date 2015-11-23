@@ -165,11 +165,16 @@ Other projects:
 ## Some tips and tricks
 
 - If you run into problems and your code follows the asynchronous HTML5/[Web SQL](http://www.w3.org/TR/webdatabase/) transaction API, you can try opening your database using `window.openDatabase` and see if you get the same problems.
+- In case your database schema may change, it is recommended to keep a table with one row and one column to keep track of your own shema version number. It is possible to add it later. The recommended schema update procedure is described below.
 
 ## Common pitfalls
 
 - It is NOT allowed to execute sql statements on a transaction following the HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/), as described below.
 - It is possible to make a Windows Phone 8.1 project using either the `windows` platform or the `wp8` platform. The `windows` platform is highly recommended over `wp8` whenever possible. Also, some plugins only support `windows` and some plugins support only `wp8`.
+
+## Major TODOs
+
+- Integrate with IndexedDBShim and some other libraries such as Sequelize, Squel.js, WebSqlSync, Persistence.js, Knex, etc.
 
 ## Alternatives
 
@@ -515,6 +520,22 @@ window.sqlitePlugin.deleteDatabase({name: "my.db", location: 1}, successcb, erro
 
 **NOTE:** not implemented for Windows "Universal" (8.1) version.
 
+# Schema versions
+
+The transactional nature of the API makes it relatively straightforward to manage a database schema that may be upgraded over time (adding new columns or new tables, for example). Here is the recommended procedure to follow upon app startup:
+- Check your database schema version number (you can use `db.executeSql` since it should be a very simple query)
+- If your database needs to be upgraded, do the following *within a single transaction* to be failure-safe:
+  - Create your database schema version table (single row single column) if it does not exist (you can check the `sqlite_master` table as described at: http://stackoverflow.com/questions/1601151/how-do-i-check-in-sqlite-whether-a-table-exists)
+  - Add any missing columns and tables, and apply any other changes necessary
+
+**IMPORTANT:** Since we cannot be certain when the users will actually update their apps, old schema versions will have to be supported for a very long time.
+
+## Use with Ionic/"ngCordova"/Angular
+
+It is recommended to follow the tutorial at: https://blog.nraboy.com/2014/11/use-sqlite-instead-local-storage-ionic-framework/
+
+Documentation at: http://ngcordova.com/docs/plugins/sqlite/
+
 # Installing
 
 ## Windows "Universal" target platform
@@ -766,10 +787,6 @@ If you continue to see the issue in a new, clean Cordova project:
   - it completely self-contained, i.e. it is using no extra libraries beyond cordova & SQLitePlugin.js;
   - if the issue is with *adding* data to a table, that the test program includes the statements you used to open the database and create the table;
   - if the issue is with *retrieving* data from a table, that the test program includes the statements you used to open the database, create the table, and enter the data you are trying to retrieve.
-
-## Before asking for help with a pre-populated database
-
-This plugin has been tested and successfully used with pre-populated databases. But you have to do it very carefully. If you are having any trouble, please start with a new, clean Cordova project, add this plugin, use the `sqlite3` tool to make a small test database, and try to read it.
 
 ## What will be supported for free
 
