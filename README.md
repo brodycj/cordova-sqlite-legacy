@@ -78,6 +78,7 @@ Other projects:
 
 ## Announcements
 
+- Published [brodybits / Cordova-quick-start-checklist](https://github.com/brodybits/Cordova-quick-start-checklist) and [brodybits / Cordova-troubleshooting-guide](https://github.com/brodybits/Cordova-troubleshooting-guide)
 - A version with support for web workers is available (with a different licensing scheme) at: [litehelpers / cordova-sqlite-workers-evfree](https://github.com/litehelpers/cordova-sqlite-workers-evfree)
 - A version with pre-populated database support added for Windows "Universal" and REGEXP support added for Android is available at: [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext)
 - PhoneGap Build is now supported through the npm package: http://phonegap.com/blog/2015/05/26/npm-plugins-available/
@@ -129,7 +130,7 @@ Other projects:
 ## Other limitations
 
 - The db version, display name, and size parameter values are not supported and will be ignored.
-- This plugin will not work before the callback for the "deviceready" event has been fired, as described in **Usage**. (This is consistent with the other Cordova plugins.)
+- This plugin will not work before the callback for the 'deviceready' event has been fired, as described in **Usage**. (This is consistent with the other Cordova plugins.)
 - Will not work within a web worker or iframe since these are not supported by the Cordova framework.
 - In-memory database `db=window.sqlitePlugin.openDatabase({name: ":memory:"})` is currently not supported.
 - The Android version cannot work with more than 100 open db files (due to the threading model used).
@@ -172,9 +173,13 @@ Other projects:
 - It is NOT allowed to execute sql statements on a transaction following the HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/), as described below.
 - It is possible to make a Windows Phone 8.1 project using either the `windows` platform or the `wp8` platform. The `windows` platform is highly recommended over `wp8` whenever possible. Also, some plugins only support `windows` and some plugins support only `wp8`.
 - The plugin class name starts with "SQL" in capital letters, but in Javascript the `sqlitePlugin` object name starts with "sql" in small letters.
-- Attempting to open a database before receiving the "deviceready" event callback.
+- Attempting to open a database before receiving the 'deviceready' event callback.
 - Inserting STRING into ID field
 - Auto-vacuum is NOT enabled by default. It is recommended to periodically VACUUM the database.
+
+## Weird pitfall(s)
+
+- intent whitelist: blocked intent such as external URL intent *may* cause this and perhaps certain Cordova plugin(s) to misbehave (see [#396](https://github.com/litehelpers/Cordova-sqlite-storage/issues/396))
 
 ## Angular/ngCordova/Ionic-related pitfalls
 
@@ -782,15 +787,24 @@ Commercial support is available by contacting: <info@litehelpers.net>
 
 ## Before asking for help
 
-If you have an issue with the plugin please check the following first:
+First steps:
+- Verify that you have followed the steps in [brodybits / Cordova-quick-start-checklist](https://github.com/brodybits/Cordova-quick-start-checklist)
+- Check the troubleshooting steps and pitfalls in [brodybits / Cordova-troubleshooting-guide](https://github.com/brodybits/Cordova-troubleshooting-guide)
+
+and check the following:
 - You are using the latest version of the Plugin Javascript & platform-specific Java or Objective-C source from this repository.
 - You have installed the Javascript & platform-specific Java or Objective-C correctly.
 - You have included the correct version of the cordova Javascript and SQLitePlugin.js and got the path right.
 - You have registered the plugin properly in `config.xml`.
 
-If you still cannot get something to work, please create a fresh, clean Cordova project, add this plugin according to the instructions above, and try a simple test program.
+If you still cannot get something to work:
+- create a fresh, clean Cordova project;
+- add this plugin according to the instructions above;
+- double-check that you follwed the steps in [brodybits / Cordova-quick-start-checklist](https://github.com/brodybits/Cordova-quick-start-checklist);
+- try a simple test program;
+- double-check the troubleshooting steps and pitfalls in [brodybits / Cordova-troubleshooting-guide](https://github.com/brodybits/Cordova-troubleshooting-guide)
 
-If you continue to see the issue in a new, clean Cordova project:
+If you continue to see the issue in the fresh, clean Cordova project:
 - Make the simplest test program you can to demonstrate the issue, including the following characteristics:
   - it completely self-contained, i.e. it is using no extra libraries beyond cordova & SQLitePlugin.js;
   - if the issue is with *adding* data to a table, that the test program includes the statements you used to open the database and create the table;
@@ -824,9 +838,9 @@ Please include the following:
 
 ## Where to ask for help
 
-Once you have followed the directions above, you may request free support in the following locations:
-- [litehelpers / Cordova-sqlite-help](https://github.com/litehelpers/Cordova-sqlite-help)
+Once you have followed the directions above, you may request free support in the following location(s):
 - [litehelpers / Cordova-sqlite-storage / issues](https://github.com/litehelpers/Cordova-sqlite-storage/issues)
+- TBD ???: ~~[litehelpers / Cordova-sqlite-help](https://github.com/litehelpers/Cordova-sqlite-help)~~
 
 Please include the information described above otherwise.
 
