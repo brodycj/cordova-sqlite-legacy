@@ -1,6 +1,6 @@
 # Changes
 
-## 0.7.15-dev
+## 0.7.15-pre
 
 - All iOS operations are now using background processing (reported to resolve intermittent problems with cordova-ios@4.0.1)
 
