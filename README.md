@@ -59,7 +59,7 @@ Other projects:
 - The following features are moved to [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) and removed from this project:
   - REGEXP support
   - Pre-populated database
-- Amazon Fire-OS is dropped due reported problems, may be added in case it works again.
+- Amazon Fire-OS is dropped due to lack of support by Cordova. Android version should be used to deploy to Fire-OS 5.0(+) devices ref: [cordova/cordova-discuss#32 (comment)](https://github.com/cordova/cordova-discuss/issues/32#issuecomment-167021676)
 - Windows "Universal" for Windows 8.0/8.1(+) and Windows Phone 8.1(+) version is in an alpha state with sqlite `3.8.10.2` embedded:
   - Issue with UNICODE `\u0000` character (same as `\0`)
   - No background processing (for future consideration)
@@ -78,6 +78,7 @@ Other projects:
 
 ## Announcements
 
+- All iOS operations are now using background processing (reported to resolve intermittent problems with cordova-ios@4.0.1)
 - Published [brodybits / Cordova-quick-start-checklist](https://github.com/brodybits/Cordova-quick-start-checklist) and [brodybits / Cordova-troubleshooting-guide](https://github.com/brodybits/Cordova-troubleshooting-guide)
 - A version with support for web workers is available (with a different licensing scheme) at: [litehelpers / cordova-sqlite-workers-evfree](https://github.com/litehelpers/cordova-sqlite-workers-evfree)
 - A version with pre-populated database support added for Windows "Universal" and REGEXP support added for Android is available at: [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext)
@@ -110,10 +111,11 @@ Other projects:
 
 ## Known issues
 
+- iOS version does not support certain rapidly repeated open-and-close or open-and-delete test scenarios due to how the implementation handles background processing
 - As described below, auto-vacuum is NOT enabled by default.
 - INSERT statement that affects multiple rows (due to SELECT cause or using TRIGGER(s), for example) does not report proper rowsAffected on Android in case [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) is disabled (using the `androidDatabaseImplementation` option in `window.sqlitePlugin.openDatabase`)
-- Memory issue observed when adding a very large number of records (due to JSON implementation) on Android (ref: [#18](https://github.com/litehelpers/Cordova-sqlite-storage/issues/18)) and iOS (ref: [#299](https://github.com/litehelpers/Cordova-sqlite-storage/issues/299) and [#308](https://github.com/litehelpers/Cordova-sqlite-storage/issues/308))
-- A stability issue was reported on the iOS version when in use together with [SockJS](http://sockjs.org/) client such as [pusher-js](https://github.com/pusher/pusher-js) at the same time (see [#196](https://github.com/litehelpers/Cordova-sqlite-storage/issues/196)). The workaround is to call sqlite functions and [SockJS](http://sockjs.org/) client functions in separate ticks (using setTimeout with 0 timeout).
+- Memory issue observed when adding a large number of records due to the JSON implementation which is improved in [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) (available with a different licensing scheme)
+- A stability issue was reported on the iOS version when in use together with [SockJS](http://sockjs.org/) client such as [pusher-js](https://github.com/pusher/pusher-js) at the same time (see [litehelpers/Cordova-sqlite-storage#196](https://github.com/litehelpers/Cordova-sqlite-storage/issues/196)). The workaround is to call sqlite functions and [SockJS](http://sockjs.org/) client functions in separate ticks (using setTimeout with 0 timeout).
 - If a sql statement fails for which there is no error handler or the error handler does not return `false` to signal transaction recovery, the plugin fires the remaining sql callbacks before aborting the transaction.
 - In case of an error, the error `code` member is bogus on Android, Windows, and WP(7/8) (fixed for Android in [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free)).
 - Possible crash on Android when using Unicode emoji characters due to [Android bug 81341](https://code.google.com/p/android/issues/detail?id=81341), which _should_ be fixed in Android 6.x
@@ -131,7 +133,7 @@ Other projects:
 
 - The db version, display name, and size parameter values are not supported and will be ignored.
 - This plugin will not work before the callback for the 'deviceready' event has been fired, as described in **Usage**. (This is consistent with the other Cordova plugins.)
-- Will not work within a web worker or iframe since these are not supported by the Cordova framework.
+- This version will not work within a web worker (not properly supported by the Cordova framework).
 - In-memory database `db=window.sqlitePlugin.openDatabase({name: ":memory:"})` is currently not supported.
 - The Android version cannot work with more than 100 open db files (due to the threading model used).
 - UNICODE line separator (`\u2028`) and paragraph separator (`\u2029`) are currently not supported and known to be broken in iOS version due to [Cordova bug CB-9435](https://issues.apache.org/jira/browse/CB-9435). There *may* be a similar issue with other UNICODE characters in the iOS version (needs further investigation). This is fixed in: [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) (available with a different licensing scheme)
@@ -152,14 +154,13 @@ Other projects:
 
 - Multi-page apps
 - Use within [InAppBrowser](http://docs.phonegap.com/en/edge/cordova_inappbrowser_inappbrowser.md.html)
-- On WP(7/8), very large integer values will be stored as negative numbers (see 
-- [#195](https://github.com/litehelpers/Cordova-sqlite-storage/issues/195) - fix is available for very large INTEGER values on WP(7/8)
+- Use within an iframe (see [litehelpers/Cordova-sqlite-storage#368 (comment)](https://github.com/litehelpers/Cordova-sqlite-storage/issues/368#issuecomment-154046367))
 - SAVEPOINT(s)
+- On WP(7/8), very large integer values will be stored as negative numbers (see [#195](https://github.com/litehelpers/Cordova-sqlite-storage/issues/195) - fix is available for very large INTEGER values on WP(7/8)
 - FTS3/FTS4 is not tested or supported for WP(7/8)
 - R-Tree is not tested for Android (in case [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) is disabled), or WP(7/8)
 - UNICODE characters not fully tested
 - Use with TRIGGER(s), JOIN and ORDER BY RANDOM
-- Use of Android version with Amazon Fire-OS (reported to be broken)
 - Integration with JXCore for Cordova (must be built without sqlite(3) built-in)
 - Delete an open database inside a statement or transaction callback.
 
@@ -168,7 +169,7 @@ Other projects:
 - If you run into problems and your code follows the asynchronous HTML5/[Web SQL](http://www.w3.org/TR/webdatabase/) transaction API, you can try opening your database using `window.openDatabase` and see if you get the same problems.
 - In case your database schema may change, it is recommended to keep a table with one row and one column to keep track of your own shema version number. It is possible to add it later. The recommended schema update procedure is described below.
 
-## Common traps & pitfalls
+## Common pitfall(s)
 
 - It is NOT allowed to execute sql statements on a transaction following the HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/), as described below.
 - It is possible to make a Windows Phone 8.1 project using either the `windows` platform or the `wp8` platform. The `windows` platform is highly recommended over `wp8` whenever possible. Also, some plugins only support `windows` and some plugins support only `wp8`.
@@ -179,7 +180,7 @@ Other projects:
 
 ## Weird pitfall(s)
 
-- intent whitelist: blocked intent such as external URL intent *may* cause this and perhaps certain Cordova plugin(s) to misbehave (see [#396](https://github.com/litehelpers/Cordova-sqlite-storage/issues/396))
+- intent whitelist: blocked intent such as external URL intent *may* cause this and perhaps certain Cordova plugin(s) to misbehave (see [litehelpers/Cordova-sqlite-storage#396](https://github.com/litehelpers/Cordova-sqlite-storage/issues/396))
 
 ## Angular/ngCordova/Ionic-related pitfalls
 
@@ -243,7 +244,7 @@ The `location` option is used to select the database subdirectory location (iOS 
 
 ```js
 // Wait for Cordova to load
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener('deviceready', onDeviceReady, false);
 
 // Cordova is ready
 function onDeviceReady() {
@@ -394,7 +395,7 @@ This is a pretty strong test: first we create a table and add a single entry, th
 
 ```js
 // Wait for Cordova to load
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener('deviceready', onDeviceReady, false);
 
 // Cordova is ready
 function onDeviceReady() {
@@ -435,7 +436,7 @@ In this case, the same transaction in the first executeSql() callback is being r
 
 ```js
 // Wait for Cordova to load
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener('deviceready', onDeviceReady, false);
 
 // Cordova is ready
 function onDeviceReady() {
@@ -547,7 +548,7 @@ The transactional nature of the API makes it relatively straightforward to manag
 
 **IMPORTANT:** Since we cannot be certain when the users will actually update their apps, old schema versions will have to be supported for a very long time.
 
-## Use with Ionic/"ngCordova"/Angular
+## Use with Ionic/ngCordova/Angular
 
 It is recommended to follow the tutorial at: https://blog.nraboy.com/2014/11/use-sqlite-instead-local-storage-ionic-framework/
 
