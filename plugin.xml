@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-sqlite-legacy-xxx"
-    version="0.7.15-legacy-xxx">
+    id="cordova-sqlite-legacy"
+    version="0.7.16">
 
-    <name>Cordova sqlite storage plugin (legacy src)</name>
+    <name>Cordova sqlite storage plugin (legacy version)</name>
 
     <license>MIT</license>
 

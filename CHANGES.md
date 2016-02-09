@@ -1,6 +1,6 @@
 # Changes
 
-## 0.7.15-xxx
+## 0.7.16
 
 - Fix WP(7/8) handling of large (64-bit) INTEGER values
 - Separate SQLiteConnectorDatabase class for Android
