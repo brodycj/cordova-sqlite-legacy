@@ -698,8 +698,6 @@ var mytests = function() {
         });
 
         test_it(suiteName + "Big [integer] value bindings", function() {
-          if (isWP8) pending('BROKEN for WP(8)'); // XXX [BUG #195]
-
           stop();
 
           var db = openDatabase("Big-int-bindings.db", "1.0", "Demo", DEFAULT_SIZE);
