@@ -1,7 +1,8 @@
 # Changes
 
-## 0.8.0-common-dev
+## 0.7.15-xxx
 
+- Fix WP(7/8) handling of large (64-bit) INTEGER values
 - Separate SQLiteConnectorDatabase class for Android
 - Renamed SQLiteProxy.js to sqlite-proxy.js in Windows version
 - Simple sql batch transaction function

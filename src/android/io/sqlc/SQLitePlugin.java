@@ -327,7 +327,8 @@ public class SQLitePlugin extends CordovaPlugin {
         DBRunner(final String dbname, JSONObject options, CallbackContext cbc) {
             this.dbname = dbname;
             this.oldImpl = options.has("androidOldDatabaseImplementation");
-            Log.v(SQLitePlugin.class.getSimpleName(), "Android db implementation: built-in android.database.sqlite package");
+            //Log.v(SQLitePlugin.class.getSimpleName(), "Android db implementation: built-in android.database.sqlite package");
+            Log.v(SQLitePlugin.class.getSimpleName(), "Android db implementation: " + (oldImpl ? "2 [OLD android.database]" : "default [sqlite-connector]"));
             this.bugWorkaround = this.oldImpl && options.has("androidBugWorkaround");
             if (this.bugWorkaround)
                 Log.v(SQLitePlugin.class.getSimpleName(), "Android db closing/locking workaround applied");
@@ -353,6 +354,8 @@ public class SQLitePlugin extends CordovaPlugin {
                 while (!dbq.stop) {
                     mydb.executeSqlBatch(dbq.queries, dbq.jsonparams, dbq.queryIDs, dbq.cbc);
 
+                    //
+                    // NOTE: androidLock[Bug]Workaround is not necessary and IGNORED for default (sqlite-connector) version.
                     if (this.bugWorkaround && dbq.queries.length == 1 && dbq.queries[0] == "COMMIT")
                         mydb.bugWorkaround();
 
