@@ -88,7 +88,99 @@
         </config-file>
 
         <source-file src="src/wp/SQLitePlugin.cs" />
+
+        <source-file src="src/wp/SQLite.cs" />
+
+        <!--
         <framework src="src/wp/cs-sqlite-dll/SQLiteWPNative.dll" custom="true" />
+          -->
+
+        <source-file src="src/external/csharp-sqlite-src/_Custom.cs" />
+
+        <source-file src="src/external/csharp-sqlite-src/BtreeInt_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/Btree_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/Delegates.cs" />
+        <source-file src="src/external/csharp-sqlite-src/Hash_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/VdbeInt_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/Vdbe_h.cs" />
+
+        <source-file src="src/external/csharp-sqlite-src/alter_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/analyze_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/attach_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/auth_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/backup_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/bitvec_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/btmutex_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/btree_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/build_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/callback_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/complete_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/crypto.cs" />
+        <source-file src="src/external/csharp-sqlite-src/ctime_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/date_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/delete_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/expr_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/fault_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/fkey_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/func_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/global_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/hash_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/hwtime_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/insert_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/journal_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/keywordhash_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/legacy_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/loadext_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/main_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/malloc_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/mem_Pool.cs" />
+        <source-file src="src/external/csharp-sqlite-src/memjournal_c.cs" />
+
+        <source-file src="src/external/csharp-sqlite-src/mutex_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/mutex_noop_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/notify_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/opcodes_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/opcodes_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/os_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/os_common_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/os_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/os_win_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/pager_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/pager_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/parse_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/parse_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/pcache1_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/pcache_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/pcache_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/pragma_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/prepare_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/printf_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/random_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/resolve_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/rowset_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/select_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/sqlite3_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/sqliteInt_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/sqliteLimit_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/status_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/table_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/tokenize_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/trigger_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/update_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/utf_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/util_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vacuum_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vdbe_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vdbeapi_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vdbeaux_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vdbeblob_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vdbemem_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vdbetrace_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/vtab_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/wal_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/wal_h.cs" />
+        <source-file src="src/external/csharp-sqlite-src/walker_c.cs" />
+        <source-file src="src/external/csharp-sqlite-src/where_c.cs" />
 
     </platform>
 
