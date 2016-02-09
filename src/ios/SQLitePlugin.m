@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015: Christopher J. Brody (aka Chris Brody)
+ * Copyright (c) 2012-2016: Christopher J. Brody (aka Chris Brody)
  * Copyright (C) 2011 Davide Bertola
  *
  * This library is available under the terms of the MIT License (2008).
@@ -81,30 +81,23 @@
     return dbPath;
 }
 
-// XXX NOTE: This implementation gets _all_ operations working in the background
-// and _should_ resolve intermittent problems reported with cordova-ios@4.0.1).
-// This implementation _does_ fail certain rapidly repeated
-// open-and close and open-and-delete test scenarios.
--(void)executeInBackground: (CDVInvokedUrlCommand*)command
+-(void)echoStringValue: (CDVInvokedUrlCommand*)command
 {
-    [self.commandDelegate runInBackground:^{
-        @synchronized(self) {
-            if ([command.methodName isEqualToString: @"open"])
-                [self openNow: command];
-            else if ([command.methodName isEqualToString: @"close"])
-                [self closeNow: command];
-            else if ([command.methodName isEqualToString: @"delete"])
-                [self deleteNow: command];
-            else if ([command.methodName isEqualToString: @"backgroundExecuteSqlBatch"])
-                [self executeSqlBatchNow: command];
-        }
-    }];
+    CDVPluginResult * pluginResult = nil;
+    NSMutableDictionary * options = [command.arguments objectAtIndex:0];
+
+    NSString * string_value = [options objectForKey:@"value"];
+
+    NSLog(@"echo string value: %@", string_value);
+
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:string_value];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 }
 
 -(void)open: (CDVInvokedUrlCommand*)command
 {
     [self.commandDelegate runInBackground:^{
-        [self executeInBackground: command];
+        [self openNow: command];
     }];
 }
 
@@ -175,7 +168,7 @@
 -(void) close: (CDVInvokedUrlCommand*)command
 {
     [self.commandDelegate runInBackground:^{
-        [self executeInBackground: command];
+        [self closeNow: command];
     }];
 }
 
@@ -213,7 +206,7 @@
 -(void) delete: (CDVInvokedUrlCommand*)command
 {
     [self.commandDelegate runInBackground:^{
-        [self executeInBackground: command];
+        [self deleteNow: command];
     }];
 }
 

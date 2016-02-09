@@ -1957,9 +1957,8 @@ namespace SQLite
                             case SQLite3.ColType.Text:
                                 targetType = typeof(string);
                                 break;
+                            // Handle INTEGER as double to support large (64-bit) values:
                             case SQLite3.ColType.Integer:
-                                targetType = typeof(int);
-                                break;
                             case SQLite3.ColType.Float:
                                 targetType = typeof(double);
                                 break;

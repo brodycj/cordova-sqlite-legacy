@@ -1,17 +1,27 @@
 # Changes
 
+## 0.7.15-xxx
+
+- Fix WP(7/8) handling of large (64-bit) INTEGER values
+- Separate SQLiteConnectorDatabase class for Android
+- Renamed SQLiteProxy.js to sqlite-proxy.js in Windows version
+- Simple sql batch transaction function
+- Echo test function
+- Remove extra runInBackground: step from iOS version
+- Java source of Android version now using io.sqlc package
+
 ## 0.7.15-pre
 
 - All iOS operations are now using background processing (reported to resolve intermittent problems with cordova-ios@4.0.1)
 
 ## 0.7.14
 
-- REGEXP support removed from this version branch
+- REGEXP support completely removed from this version branch
 - Remove src/android/libs/.gitignore (inadvertently added in 0.7.13)
 
 ## 0.7.13
 
-- REGEXP support removed from this version branch
+- REGEXP support partially removed from this version branch
 - Rename Windows C++ Database close function to closedb to resolve conflict for Windows Store certification
 - Android version with sqlite `3.8.10.2` embedded (with error messages fixed)
 - Pre-populated database support removed from this version branch
@@ -122,4 +132,3 @@
   - fix integer data binding
 - Fix open/close callbacks Android & WP(8)
 - Resolve issue with INSERT OR IGNORE (Android)
-

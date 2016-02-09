@@ -20,6 +20,13 @@ namespace Cordova.Extension.Commands
         #region SQLitePlugin options
 
         [DataContract]
+        public class SQLitePluginEchoOptions
+        {
+            [DataMember(IsRequired = true, Name = "value")]
+            public string value { get; set; }
+        }
+
+        [DataContract]
         public class SQLitePluginOpenOptions
         {
             [DataMember(IsRequired = true, Name = "name")]
@@ -96,6 +103,25 @@ namespace Cordova.Extension.Commands
         public SQLitePlugin()
         {
             this.databaseManager = new DatabaseManager(this);
+        }
+
+        public void echoStringValue(string options)
+        {
+            string mycbid = this.CurrentCommandCallbackId;
+
+            try
+            {
+                String[] jsonOptions = JsonHelper.Deserialize<string[]>(options);
+                mycbid = jsonOptions[1];
+
+                var echoOptions = JsonHelper.Deserialize<SQLitePluginEchoOptions>(jsonOptions[0]);
+
+                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, echoOptions.value), mycbid);
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION), mycbid);
+            }
         }
 
         public void open(string options)
