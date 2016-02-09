@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.phonegap.plugins.sqlite"
-    version="0.7.0">
+    id="cordova-sqlite-common"
+    version="0.8.0-common-dev">
 
-    <name>SQLitePlugin</name>
+    <name>Cordova sqlite storage plugin (core version)</name>
 
     <license>MIT</license>
 
+    <keywords>sqlite</keywords>
+
     <description>Native interface to SQLite for PhoneGap/Cordova. Allows you to use more storage and provides more flexibility than the standard Web SQL database (window.openDatabase).</description>
-    <author>Various</author>
+    <author>Litehelpers/Various</author>
 
     <engines>
         <engine name="cordova" version=">=3.3.0" />
@@ -21,38 +23,26 @@
 
     <!-- android -->
     <platform name="android">
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="org.pgsqlite.SQLitePlugin"
-                      android:label="@string/app_name">
-            </activity>
-        </config-file>
-
-        <!-- Cordova >= 3.3.0 -->
+        <!-- Cordova >= 3.0.0 -->
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="SQLitePlugin">
-                <param name="android-package" value="org.pgsqlite.SQLitePlugin"/>
+                <param name="android-package" value="io.sqlc.SQLitePlugin"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/org/pgsqlite/SQLitePlugin.java" target-dir="src/org/pgsqlite"/>
-    </platform>
+        <source-file src="src/android/io/sqlc/SQLitePlugin.java" target-dir="src/io/sqlc"/>
+        <source-file src="src/android/io/sqlc/SQLiteAndroidDatabase.java" target-dir="src/io/sqlc"/>
+        <source-file src="src/android/io/sqlc/SQLiteConnectorDatabase.java" target-dir="src/io/liteglue"/>
 
-    <!-- amazon-fireos -->
-    <platform name="amazon-fireos">
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="org.pgsqlite.SQLitePlugin"
-                      android:label="@string/app_name">
-            </activity>
-        </config-file>
+        <!-- Android-sqlite-connector [jar]: -->
+        <source-file src="src/external/libs/sqlite-connector.jar" target-dir="libs"/>
+        <!-- Android-sqlite-connector native driver [native libs]: -->
+        <source-file src="src/external/libs/arm64-v8a/libsqlc-native-driver.so" target-dir="libs/arm64-v8a"/>
+        <source-file src="src/external/libs/armeabi/libsqlc-native-driver.so" target-dir="libs/armeabi"/>
+        <source-file src="src/external/libs/armeabi-v7a/libsqlc-native-driver.so" target-dir="libs/armeabi-v7a"/>
+        <source-file src="src/external/libs/x86/libsqlc-native-driver.so" target-dir="libs/x86"/>
+        <source-file src="src/external/libs/x86_64/libsqlc-native-driver.so" target-dir="libs/x86_64"/>
 
-        <!-- Cordova >= 3.3.0 -->
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="SQLitePlugin">
-                <param name="android-package" value="org.pgsqlite.SQLitePlugin"/>
-            </feature>
-        </config-file>
-
-        <source-file src="src/android/org/pgsqlite/SQLitePlugin.java" target-dir="src/org/pgsqlite"/>
     </platform>
 
     <!-- ios -->
@@ -67,6 +57,23 @@
         <header-file src="src/ios/SQLitePlugin.h" />
         <source-file src="src/ios/SQLitePlugin.m" />
         <framework src="libsqlite3.dylib" />
+
+    </platform>
+
+    <!-- windows -->
+    <platform name="windows">
+        <js-module src="src/windows/sqlite-proxy.js" name="SQLiteProxy">
+            <merges target="" />
+        </js-module>
+
+        <!-- SQLite3 JS module from SQLite3-Win-RT/SQLite3JS: -->
+        <js-module src="src/windows/SQLite3-Win-RT/SQLite3JS/js/SQLite3.js" name="SQLite3">
+            <merges target="" />
+        </js-module>
+
+        <!-- Thanks to AllJoyn-Cordova / cordova-plugin-alljoyn: -->
+        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.Windows/SQLite3.Windows.vcxproj" custom="true" type="projectReference" target="windows" />
+        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.WindowsPhone/SQLite3.WindowsPhone.vcxproj" custom="true" type="projectReference" target="phone" />
 
     </platform>
 
@@ -85,4 +92,6 @@
 
     </platform>
 
-</plugin> <!-- vim: set expandtab : -->
+</plugin>
+
+<!-- vim: set expandtab : -->

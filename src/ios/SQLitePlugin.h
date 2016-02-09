@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012-2015 Chris Brody
+ * Copyright (c) 2012-2016: Christopher J. Brody (aka Chris Brody)
  * Copyright (C) 2011 Davide Bertola
  *
  * This library is available under the terms of the MIT License (2008).
@@ -30,28 +30,21 @@ typedef int WebSQLError;
 @property (nonatomic, copy) NSMutableDictionary *openDBs;
 @property (nonatomic, copy) NSMutableDictionary *appDBPaths;
 
-// Open / Close
+// Self-test
+-(void) echoStringValue: (CDVInvokedUrlCommand*)command;
+
+// Open / Close / Delete
 -(void) open: (CDVInvokedUrlCommand*)command;
 -(void) close: (CDVInvokedUrlCommand*)command;
 -(void) delete: (CDVInvokedUrlCommand*)command;
 
+-(void) openNow: (CDVInvokedUrlCommand*)command;
+-(void) closeNow: (CDVInvokedUrlCommand*)command;
+-(void) deleteNow: (CDVInvokedUrlCommand*)command;
+
 // Batch processing interface
 -(void) backgroundExecuteSqlBatch: (CDVInvokedUrlCommand*)command;
--(void) executeSqlBatch: (CDVInvokedUrlCommand*)command;
 
-// Single requests interface
--(void) backgroundExecuteSql:(CDVInvokedUrlCommand*)command;
--(void) executeSql:(CDVInvokedUrlCommand*)command;
+-(void) executeSqlBatchNow: (CDVInvokedUrlCommand*)command;
 
-// Perform the SQL request
--(CDVPluginResult*) executeSqlWithDict: (NSMutableDictionary*)dict andArgs: (NSMutableDictionary*)dbargs;
-
--(id) getDBPath:(NSString *)dbFile at:(NSString *)atkey;
-
-+(NSDictionary *)captureSQLiteErrorFromDb:(struct sqlite3 *)db;
-
-+(int)mapSQLiteErrorCode:(int)code;
-
-+(NSString*)getBlobAsBase64String:(const char*) blob_chars
-                       withlength:(int) blob_length;
 @end /* vim: set expandtab : */
