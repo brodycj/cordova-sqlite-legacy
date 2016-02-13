@@ -6,7 +6,7 @@ License for Android, Windows 8.1(+)/Windows Phone 8.1(+), and WP(7/8) versions: 
 
 License for iOS version: MIT only
 
-|Android - Circle CI (full suite)|iOS - Travis CI (limited suite)|
+|Android CI (limited suite)|iOS CI (limited suite)|
 |-----------------------|----------------------|
 |[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy.svg?branch=legacy-master)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy)|
 

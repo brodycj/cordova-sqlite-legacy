@@ -1,5 +1,12 @@
 # Changes
 
+## 0.7.xx-xx
+
+### cordova-sqlite-storage 0.8.2
+
+- Workaround fix for empty readTransaction issue (litehelpers/Cordova-sqlite-storage#409)
+- Split spec/www/spec/legacy.js into db-open-close-delete-test.js & tx-extended.js
+
 ## 0.7.16
 
 - Fix WP(7/8) handling of large (64-bit) INTEGER values
