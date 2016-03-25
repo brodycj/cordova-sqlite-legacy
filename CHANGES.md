@@ -1,5 +1,13 @@
 # Changes
 
+## 0.7.18-xx-xx
+
+### cordova-sqlite-storage 0.8.5
+
+- More explicit iosDatabaseLocation option
+- iOS database location is now mandatory
+- Split-up of some more spec test scripts
+
 ## 0.7.17
 
 ### cordova-sqlite-storage 0.8.2
