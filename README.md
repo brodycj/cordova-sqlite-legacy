@@ -10,7 +10,7 @@ License for iOS version: MIT only
 |-----------------------|----------------------|
 |[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy.svg?branch=legacy-master)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy)|
 
-## BREAKING CHANGE: Database location is now mandatory
+## BREAKING CHANGE: Database location parameter is now mandatory
 
 The `location` or `iosDatabaseLocation` *must* be specified in the `openDatabase` and `deleteDatabase` calls, as documented below.
 
@@ -41,9 +41,19 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 
 **NOTE:** Changing `BackupWebStorage` in `config.xml` has no effect on a database created by this plugin. `BackupWebStorage` applies only to local storage and/or Web SQL storage created in the WebView (*not* using this plugin). Ref: [phonegap/build#338 (comment)](https://github.com/phonegap/build/issues/338#issuecomment-113328140)
 
-## Support this project
+## Available for hire
 
-[@brodybits (Christopher J. Brody aka Chris Brody)](https://github.com/brodybits) dedicates a significant amout of working time to maintain and improve this project, and has turned down multiple full-time work opportunities in order to support this project. [@brodybits](https://github.com/brodybits) is available for part-time work in areas related to this project including priority support, priority feature development, and higher-level application development. Such part-time assignments would help [@brodybits](https://github.com/brodybits) keep this project alive.
+The primary author and maintainer [@brodybits (Christopher J. Brody aka Chris Brody)](https://github.com/brodybits) is available for contracting assignments. Part-time contracting assignments would really help keep this project alive. ([@brodybits](https://github.com/brodybits) dedicates a significant amout of working time to maintain and improve this project, and has turned down multiple full-time work opportunities in order to support this project.)
+
+[@brodybits](https://github.com/brodybits) can be contacted at:
+- <brodybits@litehelpers.net>
+- <sales@litehelpers.net>
+- LinkedIn: <https://www.linkedin.com/in/chrisbrody>
+
+Some other projects by [@brodybits](https://github.com/brodybits):
+- [liteglue / Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) - Lightweight SQLiteConnection library with abstraction layer over [liteglue / Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver)
+- [brodybits / node-uvhttp](https://github.com/brodybits/node-uvhttp) - HTTP server library that serves static content from native code - *experimental and extremely limited*
+- [brodybits / java-node](https://github.com/brodybits/java-node) - two-way binding interface between Java and Node.js (Javascript) - *experimental and extremely limited*
 
 ## Status
 
@@ -65,7 +75,7 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 - FTS3, FTS4, and R-Tree are *not* supported for WP(7/8)
 - Android is supported back to SDK 10 (a.k.a. Gingerbread, Android 2.3.3); support for older versions is available upon request.
 - API to open the database may be changed somewhat to be more streamlined. Transaction and single-statement query API will NOT be changed.
-- In case of memory issues please use smaller transactions or use the version (with a different licensing scheme) at: [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) or [litehelpers / cordova-sqlite-workers-evfree](https://github.com/litehelpers/cordova-sqlite-workers-evfree)
+- In case of memory issues please use smaller transactions or use the version (with a different licensing scheme) at: [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free)
 
 ## Announcements
 
@@ -124,7 +134,7 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 ## Other limitations
 
 - The db version, display name, and size parameter values are not supported and will be ignored.
-- _Absolute and relative subdirectory path(s) are not tested or supported._
+- Absolute and relative subdirectory path(s) are not tested or supported.
 - This plugin will not work before the callback for the 'deviceready' event has been fired, as described in **Usage**. (This is consistent with the other Cordova plugins.)
 - This version will not work within a web worker (not properly supported by the Cordova framework).
 - In-memory database `db=window.sqlitePlugin.openDatabase({name: ":memory:"})` is currently not supported.
@@ -136,14 +146,14 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 - Case-insensitive matching and other string manipulations on Unicode characters, which is provided by optional ICU integration in the sqlite source and working with recent versions of Android, is not supported for any target platforms.
 - iOS version uses a thread pool but with only one thread working at a time due to "synchronized" database access
 - Large query result can be slow, also due to JSON implementation
-- ATTACH to another database file is not supported (due to path specifications, which work differently depending on the target platform)
+- ATTACH to another database file is not supported, fixed (along with the memory and iOS UNICODE `\u2028` line separator / `\u2029` paragraph separator issues) in: [litehelpers / Cordova-sqlite-evfree-ext](https://github.com/litehelpers/Cordova-sqlite-evfree-ext) (available with a different licensing scheme)
 - User-defined savepoints are not supported and not expected to be compatible with the transaction locking mechanism used by this plugin. In addition, the use of BEGIN/COMMIT/ROLLBACK statements is not supported.
 - Problems have been reported when using this plugin with Crosswalk (for Android). It may help to install Crosswalk as a plugin instead of using Crosswalk to create the project.
 - Does not work with [axemclion / react-native-cordova-plugin](https://github.com/axemclion/react-native-cordova-plugin) since the `window.sqlitePlugin` object exported (ES5 feature). It is recommended to use [andpor / react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage) for SQLite database access with React Native Android/iOS instead.
 
 ## Further testing needed
 
-- _Integration with PhoneGap developer app_
+- Integration with PhoneGap developer app
 - Multi-page apps
 - Use within [InAppBrowser](http://docs.phonegap.com/en/edge/cordova_inappbrowser_inappbrowser.md.html)
 - Use within an iframe (see [litehelpers/Cordova-sqlite-storage#368 (comment)](https://github.com/litehelpers/Cordova-sqlite-storage/issues/368#issuecomment-154046367))
@@ -190,14 +200,17 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 - [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) - version with REGEXP support for Android/iOS and pre-populated database support *added* for Windows 10
 - [litehelpers / Cordova-sqlcipher-adapter](https://github.com/litehelpers/Cordova-sqlcipher-adapter) - supports [SQLCipher](https://www.zetetic.net/sqlcipher/) for Android, iOS, and Windows 8.1(+)/Windows Phone 8.1(+)
 - [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) - internal memory improvements to support larger transactions (Android/iOS) and fix to support all Unicode characters (iOS) - with a different licensing scheme
-- [litehelpers / cordova-sqlite-workers-evfree](https://github.com/litehelpers/cordova-sqlite-workers-evfree) - version with support for web workers, includes internal memory improvements to support larger transactions (Android/iOS) and fix to support all Unicode characters (iOS) - with a different licensing scheme
+- [litehelpers / Cordova-sqlite-evfree-ext](https://github.com/litehelpers/Cordova-sqlite-evfree-ext) - version with support for ATTACH, includes internal memory improvements to support larger transactions (Android/iOS) and fix to support all Unicode characters (with a different licensing scheme)
+- [litehelpers / cordova-sqlite-workers-evfree](https://github.com/litehelpers/cordova-sqlite-workers-evfree) - version with support for web workers, includes internal memory improvements to support larger transactions (Android/iOS) and fix to support all Unicode characters (iOS) (with a different licensing scheme)
 - Adaptation for React Native Android and iOS: [andpor / react-native-sqlite-storage](https://github.com/andpor/react-native-sqlite-storage)
 - Original version for iOS (with a slightly different transaction API): [davibe / Phonegap-SQLitePlugin](https://github.com/davibe/Phonegap-SQLitePlugin)
 
 ### Other SQLite adapter projects
 
 - [object-layer / AnySQL](https://github.com/object-layer/anysql) - Unified SQL API over multiple database engines
-- Simpler sqlite plugin with a simpler API: [samikrc / CordovaSQLite](https://github.com/samikrc/CordovaSQLite)
+- [samikrc / CordovaSQLite](https://github.com/samikrc/CordovaSQLite) - Simpler sqlite plugin with a simpler API
+- [nolanlawson / sqlite-plugin-2](https://github.com/nolanlawson/sqlite-plugin-2) - Simpler fork/partial rewrite (TBD not sure how much of the code, such as iOS code by [@davibe](https://github.com/davibe), is copied/reused)
+- [nolanlawson / node-websql](https://github.com/nolanlawson/node-websql) - Web SQL API implementation for Node.js
 - [an-rahulpandey / cordova-plugin-dbcopy](https://github.com/an-rahulpandey/cordova-plugin-dbcopy) - Alternative way to copy pre-populated database
 - [EionRobb / phonegap-win8-sqlite](https://github.com/EionRobb/phonegap-win8-sqlite) - WebSQL add-on for Win8/Metro apps (perhaps with a different API), using an old version of the C++ library from [SQLite3-WinRT Component](https://github.com/doo/SQLite3-WinRT) (as referenced by [01org / cordova-win8](https://github.com/01org/cordova-win8))
 - [SQLite3-WinRT Component](https://github.com/doo/SQLite3-WinRT) - C++ component that provides a nice SQLite API with promises for WinJS
@@ -235,24 +248,36 @@ The idea is to emulate the HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/
 
 ## Opening a database
 
-~~There are two options~~ to open a database access object:
-- **Recommended:** `var db = window.sqlitePlugin.openDatabase({name: 'my.db', iosDatabaseLocation: 'default'}, successcb, errorcb);`
-- No longer supported: ~~**Classical:** `var db = window.sqlitePlugin.openDatabase("myDatabase.db", "1.0", "Demo", -1);`~~
+To open a database access object (in the **new** default location):
 
-The `iosDatabaseLocation` option is used to select the database subdirectory location (iOS *only*) with the following choices:
-- `default`: `Library/LocalDatabase` subdirectory - *NOT* visible to iTunes and *NOT* backed up by iCloud (will be the default in the future)
+```js
+var db = window.sqlitePlugin.openDatabase({name: 'my.db', location: 'default'}, successcb, errorcb);
+```
+
+**WARNING:** The new "default" location value is *NOT* the same as the old default location and would break an upgrade for an app that was using the old default value (0) on iOS.
+
+To specify a different location (affects iOS *only*):
+
+```js
+var db = window.sqlitePlugin.openDatabase({name: 'my.db', iosDatabaseLocation: 'Library'}, successcb, errorcb);
+```
+
+where the `iosDatabaseLocation` option may be set to one of the following choices:
+- `default`: `Library/LocalDatabase` subdirectory - *NOT* visible to iTunes and *NOT* backed up by iCloud
 - `Library`: `Library` subdirectory - backed up by iCloud, *NOT* visible to iTunes
 - `Documents`: `Documents` subdirectory - visible to iTunes and backed up by iCloud
 
-**WARNING:** The new "default" iosDatabaseLocation value is *NOT* the same as the old default location and would break an upgrade for an app using the old default.
+**WARNING:** Again, the new "default" iosDatabaseLocation value is *NOT* the same as the old default location and would break an upgrade for an app using the old default value (0) on iOS.
 
 *ALTERNATIVE (deprecated):*
 - `var db = window.sqlitePlugin.openDatabase({name: "my.db", location: 1}, successcb, errorcb);`
 
-The `location` option is used to select the database subdirectory location (iOS *only*) with the following choices:
+with the `location` option set to one the following choices (affects iOS *only*):
 - `0` ~~(default)~~: `Documents` - visible to iTunes and backed up by iCloud
 - `1`: `Library` - backed up by iCloud, *NOT* visible to iTunes
-- `2`: `Library/LocalDatabase` - *NOT* visible to iTunes and *NOT* backed up by iCloud
+- `2`: `Library/LocalDatabase` - *NOT* visible to iTunes and *NOT* backed up by iCloud (same as using "default")
+
+No longer supported (see tip below to overwrite `window.openDatabase`): ~~`var db = window.sqlitePlugin.openDatabase("myDatabase.db", "1.0", "Demo", -1);`~~
 
 **IMPORTANT:** Please wait for the 'deviceready' event, as in the following example:
 
@@ -610,12 +635,12 @@ db.executeSql("SELECT LENGTH('tenletters') AS stringlength", [], function (res) 
 ## Delete a database
 
 ```js
-window.sqlitePlugin.deleteDatabase({name: 'my.db', iosDatabaseLocation: 'default'}, successcb, errorcb);
+window.sqlitePlugin.deleteDatabase({name: 'my.db', location: 'default'}, successcb, errorcb);
 ```
 
-with `iosDatabaseLocation` or `location` *required* as described above for `openDatabase` (iOS *only*)
+with `location` or `iosDatabaseLocation` parameter *required* as described above for `openDatabase` (affects iOS *only*)
 
-# Schema versions
+# Database schema versions
 
 The transactional nature of the API makes it relatively straightforward to manage a database schema that may be upgraded over time (adding new columns or new tables, for example). Here is the recommended procedure to follow upon app startup:
 - Check your database schema version number (you can use `db.executeSql` since it should be a very simple query)
@@ -769,7 +794,7 @@ Free support for issues with Angular/"ngCordova"/Ionic will only be provided if 
 ## What information is needed for help
 
 Please include the following:
-- Which platform(s) Android/iOS/WP8/Windows 8.1/Windows Phone 8.1
+- Which platform(s) (Android or iOS)
 - Clear description of the issue
 - A small, complete, self-contained program that demonstrates the problem, preferably as a Github project. ZIP/TGZ/BZ2 archive available from a public link is OK. No RAR or other such formats please!
 - A Cordova project is highly preferred. Intel, MS IDE, or similar project formats should be avoided.
@@ -850,7 +875,10 @@ ingredients = new Lawnchair({db: "cookbook", name: "ingredients", ...}, myCallba
 
 ## PouchDB
 
-The adapter is now part of [PouchDB](http://pouchdb.com/) thanks to [@nolanlawson](https://github.com/nolanlawson), see [PouchDB FAQ](http://pouchdb.com/faq.html).
+The adapter is part of [PouchDB](http://pouchdb.com/) as documented at:
+- <https://pouchdb.com/adapters.html>
+- <https://pouchdb.com/api.html#create_database>
+- <http://pouchdb.com/faq.html>.
 
 **NOTE:** The PouchDB adapter has not been tested with the new [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector). You may need to include `androidDatabaseImplementation: 2` in the `sqlitePlugin.openDatabase()` options as described above.
 
@@ -863,11 +891,11 @@ The adapter is now part of [PouchDB](http://pouchdb.com/) thanks to [@nolanlawso
 
 ## Code
 
-**WARNING:** Please do NOT propose changes from your default branch. In general, contributions are rebased using `git rebase` or `git cherry-pick` and not merged.
+**WARNING:** Please do NOT propose changes from your default branch. Contributions may be rebased using `git rebase` or `git cherry-pick` and not merged.
 
 - Patches with bug fixes are helpful, especially when submitted with test code.
 - Other enhancements welcome for consideration, when submitted with test code and are working for all supported platforms. Increase of complexity should be avoided.
-- All contributions may be reused by [@brodybits (Chris Brody)](https://github.com/brodybits) under another license in the future. Efforts will be taken to give credit for major contributions but it will not be guaranteed.
+- All contributions may be reused by [@brodybits](https://github.com/brodybits) under another license in the future. Efforts will be taken to give credit for major contributions but it will not be guaranteed.
 - Project restructuring, i.e. moving files and/or directories around, should be avoided if possible.
 - If you see a need for restructuring, it is better to first discuss it in new issue where alternatives can be discussed before reaching a conclusion. If you want to propose a change to the project structure:
   - Remember to make (and use) a special branch within your fork from which you can send the proposed restructuring;
@@ -876,6 +904,4 @@ The adapter is now part of [PouchDB](http://pouchdb.com/) thanks to [@nolanlawso
 
 ## Contact
 
-<info@litehelpers.net>
-
-LinkedIn: https://www.linkedin.com/in/chrisbrody
+<sales@litehelpers.net>

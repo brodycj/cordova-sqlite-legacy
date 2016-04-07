@@ -1,5 +1,12 @@
 # Changes
 
+## 0.7.xx
+
+### cordova-sqlite-storage 1.2.0
+
+- Rename Lawnchair adapter to prevent clash with standard webkit-sqlite adapter
+- Support location: 'default' setting in openDatabase & deleteDatabase
+
 ## 0.7.18
 
 ### cordova-sqlite-storage 0.8.5
