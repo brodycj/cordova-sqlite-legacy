@@ -153,6 +153,7 @@ var mytests = function() {
         });
 
         it(suiteName + "String vertical tab test", function(done) {
+          // XXX BROKEN for WP(8)
           var db = openDatabase("String-vertical-tab-test.db", "1.0", "Demo", DEFAULT_SIZE);
           expect(db).toBeDefined();
 
@@ -167,6 +168,7 @@ var mytests = function() {
         });
 
         it(suiteName + "String form feed test", function(done) {
+          // XXX BROKEN for WP(8)
           var db = openDatabase("String-form-feed-test.db", "1.0", "Demo", DEFAULT_SIZE);
           expect(db).toBeDefined();
 
@@ -181,6 +183,7 @@ var mytests = function() {
         });
 
         it(suiteName + "String backspace test", function(done) {
+          // XXX BROKEN for WP(8)
           var db = openDatabase("String-backspace-test.db", "1.0", "Demo", DEFAULT_SIZE);
           expect(db).toBeDefined();
 

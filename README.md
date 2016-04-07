@@ -6,7 +6,7 @@ License for Android, Windows 8.1(+)/Windows Phone 8.1(+), and WP(7/8) versions: 
 
 License for iOS version: MIT only
 
-|Android CI (limited suite)|iOS CI (limited suite)|
+|Android CI (**full** suite)|iOS CI (*very* limited suite)|
 |-----------------------|----------------------|
 |[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy.svg?branch=legacy-master)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy)|
 
@@ -52,7 +52,6 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
   - default: lightweight [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector)
   - optional: built-in Android database classes (usage described below)
 - Windows 8.1(+)/Windows Phone 8.1(+) version is in an alpha state with sqlite `3.8.10.2` embedded:
-  - Native build for Windows 10 is still missing
   - Issue with UNICODE `\u0000` character (same as `\0`)
   - No background processing (for future consideration)
   - You *may* encounter issues with Cordova CLI due to [CB-8866](https://issues.apache.org/jira/browse/CB-8866). *Old workaround:* you can install using [litehelpers / cordova-windows-nufix](https://github.com/litehelpers/cordova-windows-nufix) and `plugman` as described below.
@@ -130,8 +129,8 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 - This version will not work within a web worker (not properly supported by the Cordova framework).
 - In-memory database `db=window.sqlitePlugin.openDatabase({name: ":memory:"})` is currently not supported.
 - The Android version cannot work with more than 100 open db files (due to the threading model used).
-- Needs testing: ~~_(Certain)_ UNICODE characters are not working in WP(7/8) version~~
-- UNICODE line separator (`\u2028`) and paragraph separator (`\u2029`) are currently not supported and known to be broken in iOS version due to [Cordova bug CB-9435](https://issues.apache.org/jira/browse/CB-9435). There *may* be a similar issue with other UNICODE characters in the iOS version (needs further investigation). This is fixed in: [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) (available with a different licensing scheme)
+- Certain US-ASCII and Unicode characters are not working in WP(7/8) version, including: vertical tab, form feed, backspace, `\u2028` (UNICODE line separator) and `\u2029` (UNICODE paragraph separator) (*further* testing needed)
+- UNICODE `\u2028` (line separator) and `\u2029` (paragraph separator) characters are currently not supported and known to be broken in iOS version due to [Cordova bug CB-9435](https://issues.apache.org/jira/browse/CB-9435). There *may* be a similar issue with *certain* other UNICODE characters in the iOS version (needs further investigation). This is fixed in: [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) (available with a different licensing scheme)
 - Blob type is currently not supported and known to be broken on multiple platforms.
 - UNICODE `\u0000` (same as `\0`) character not working in Android (default native database implementation), Windows 8.1(+)/Windows Phone 8.1(+), or WP(7/8)
 - Case-insensitive matching and other string manipulations on Unicode characters, which is provided by optional ICU integration in the sqlite source and working with recent versions of Android, is not supported for any target platforms.
@@ -684,13 +683,14 @@ A posting how to get started developing on Windows host without the Cordova CLI 
 ## Installation sources
 
 - https://github.com/litehelpers/Cordova-sqlite-legacy - latest version
-- FUTURE TBD: ~~`cordova-sqlite-legacy` - stable npm package version~~
+- `cordova-sqlite-legacy` - stable npm package version
 
 ## Source tree
 
 - `SQLitePlugin.coffee.md`: platform-independent (Literate coffee-script, can be read by recent coffee-script compiler)
 - `www`: `SQLitePlugin.js` platform-independent Javascript as generated from `SQLitePlugin.coffee.md` (and checked in!)
 - `src`: platform-specific source code:
+   - `common` - common dependency (iOS and Windows)
    - `external` - placeholder for external dependencies - *not required in this version*
    - `android` - Java plugin code for Android (along with [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) and [Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver) library jars)
    - `ios` - Objective-C plugin code for iOS
@@ -726,7 +726,7 @@ Assuming your app has a recent template as used by the Cordova create script, ad
 
 Free support is provided on a best-effort basis and is only available in public forums. Please follow the steps below to be sure you have done your best before requesting help.
 
-Commercial support is available by contacting: <info@litehelpers.net>
+Commercial support is available by contacting: <sales@litehelpers.net>
 
 ## Before asking for help
 
@@ -780,9 +780,17 @@ Please include the following:
 - RAR or similar archive formats
 - Intel, MS IDE, or similar project formats unless absolutely necessary
 
+## Where to ask for help
+
+Once you have followed the directions above, you may request free support in the following location(s):
+- [litehelpers / Cordova-sqlite-legacy / issues](https://github.com/litehelpers/Cordova-sqlite-legacy/issues)
+- [litehelpers / Cordova-sqlite-help](https://github.com/litehelpers/Cordova-sqlite-help)
+
+Please include the information described above otherwise.
+
 ## Professional support
 
-Professional support is available, please contact: <info@litehelpers.net>
+Professional support is available, please contact: <sales@litehelpers.net>
 
 # Unit tests
 
