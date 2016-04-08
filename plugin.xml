@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-sqlite-legacy"
-    version="0.7.18">
+    version="0.x.x">
 
     <name>Cordova sqlite storage plugin (legacy version)</name>
 
@@ -67,14 +67,15 @@
             <merges target="" />
         </js-module>
 
-        <!-- SQLite3 JS module from SQLite3-Win-RT/SQLite3JS: -->
+        <!-- SQLite3 JS module from SQLite3-WinRT/SQLite3JS: -->
         <js-module src="src/windows/SQLite3-Win-RT/SQLite3JS/js/SQLite3.js" name="SQLite3">
             <merges target="" />
         </js-module>
 
         <!-- Thanks to AllJoyn-Cordova / cordova-plugin-alljoyn: -->
-        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.Windows/SQLite3.Windows.vcxproj" custom="true" type="projectReference" target="windows" />
-        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.WindowsPhone/SQLite3.WindowsPhone.vcxproj" custom="true" type="projectReference" target="phone" />
+        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.UWP/SQLite3.UWP.vcxproj" custom="true" type="projectReference" versions="10.*" />
+        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.Windows/SQLite3.Windows.vcxproj" custom="true" type="projectReference" target="windows" versions="8.1" />
+        <framework src="src/windows/SQLite3-Win-RT/SQLite3/SQLite3.WindowsPhone/SQLite3.WindowsPhone.vcxproj" custom="true" type="projectReference" target="phone" versions="8.1" />
 
     </platform>
 
@@ -177,6 +178,7 @@
 
     </platform>
 
+    <!-- XXX GONE:
     <platform name="wp7">
         <config-file target="config.xml" parent="/*">
             <feature name="SQLitePlugin">
@@ -275,6 +277,7 @@
         <source-file src="src/wp/csharp-sqlite-src/where_c.cs" />
 
     </platform>
+     -->
 
 </plugin>
 
