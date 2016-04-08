@@ -1,9 +1,11 @@
 # Changes
 
-## 1.3.0
+## 1.3.1
 
 - Include Windows 10 UWP support (along with Windows 8.1 and Windows Phone 8.1 build)
 - Drop support for WP7 (WP7 was never tested)
+
+## 1.3.0
 
 ### cordova-sqlite-storage 1.2.0
 
