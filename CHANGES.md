@@ -1,9 +1,9 @@
 # Changes
 
-## 0.x.x
+## 1.3.0
 
-- _Include Windows 10 UWP support (along with Windows 8.1 and Windows Phone 8.1 build)_
-- _Drop support for WP7 (was not tested)_
+- Include Windows 10 UWP support (along with Windows 8.1 and Windows Phone 8.1 build)
+- Drop support for WP7 (WP7 was never tested)
 
 ### cordova-sqlite-storage 1.2.0
 
@@ -27,7 +27,7 @@
 
 ## 0.7.16
 
-- Fix WP(7/8) handling of large (64-bit) INTEGER values
+- Fix WP8 handling of large (64-bit) INTEGER values
 - Separate SQLiteConnectorDatabase class for Android
 - Renamed SQLiteProxy.js to sqlite-proxy.js in Windows version
 
