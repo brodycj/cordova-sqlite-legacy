@@ -78,7 +78,7 @@ namespace Cordova.Extension.Commands
             /// <summary>
             /// Callback identifer
             /// </summary>
-            [DataMember(IsRequired = true, Name = "qid")]
+            [DataMember(IsRequired = false, Name = "qid")]
             public string queryId { get; set; }
 
             /// <summary>
@@ -650,12 +650,12 @@ namespace Cordova.Extension.Commands
 
                     if (resultString.Length != 0)
                     {
-                        batchResultsStr += "{\"qid\":\"" + transaction.queryId + "\",\"type\":\"success\",\"result\":{" + resultString + "}}";
+                        batchResultsStr += "{\"type\":\"success\",\"result\":{" + resultString + "}}";
                         //System.Diagnostics.Debug.WriteLine("batchResultsStr: " + batchResultsStr);
                     }
                     else
                     {
-                        batchResultsStr += "{\"qid\":\"" + transaction.queryId + "\",\"type\":\"error\",\"result\":{\"message\":\"" + errorMessage.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\"}}";
+                        batchResultsStr += "{\"type\":\"error\",\"result\":{\"message\":\"" + errorMessage.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\"}}";
                     }
                 }
 

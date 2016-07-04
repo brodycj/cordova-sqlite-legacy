@@ -1,5 +1,9 @@
 # Changes
 
+## 1.3.2-pre1
+
+- Drop requirements for internal qid JSON field in WP8 version
+
 ## 1.3.1
 
 - Include Windows 10 UWP support (along with Windows 8.1 and Windows Phone 8.1 build)
