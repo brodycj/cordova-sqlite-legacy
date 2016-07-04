@@ -1,6 +1,6 @@
 {
   "name": "cordova-sqlite-legacy",
-  "version": "1.3.2-pre2",
+  "version": "1.3.2-pre3",
   "description": "Native interface to SQLite for PhoneGap/Cordova (legacy version)",
   "cordova": {
     "id": "cordova-sqlite-legacy",
@@ -22,12 +22,6 @@
     "cordova-ios",
     "cordova-windows",
     "cordova-wp8"
-  ],
-  "engines": [
-    {
-      "name": "cordova",
-      "version": ">=3.3.0"
-    }
   ],
   "author": "various",
   "license": "MIT",
