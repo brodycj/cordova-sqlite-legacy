@@ -1,8 +1,8 @@
 # Changes
 
-## 1.3.2-pre1
+## 1.3.2-pre2
 
-- Drop requirements for internal qid JSON field in WP8 version
+- Drop requirement for internal qid JSON field in WP8 version
 
 ## 1.3.1
 

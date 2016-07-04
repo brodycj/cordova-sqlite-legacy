@@ -8,7 +8,7 @@ License for iOS version: MIT only
 
 |Android CI (**full** suite)|iOS CI (*very* limited suite)|
 |-----------------------|----------------------|
-|[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy.svg?branch=legacy-master)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy)|
+|[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy.svg)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy)|
 
 ## BREAKING CHANGE: Database location parameter is now mandatory
 
@@ -125,6 +125,8 @@ Some other projects by [@brodybits](https://github.com/brodybits):
 - Close database bugs described below.
 - When a database is opened and deleted without closing, the iOS version is known to leak resources.
 - It is NOT possible to open multiple databases with the same name but in different locations (iOS version).
+- Incorrect or missing insertId/rowsAffected in results for INSERT/UPDATE/DELETE SQL statements with extra semicolon(s) in the beginning for Android (in case the `androidDatabaseImplementation: 2` option is used) and WP8.
+- Within a readTransaction the plugin executes SQL write statements that start with extra semicolon(s).
 - DROP table does not actually delete it in WP8 version, due to limitations of CSharp-SQLite.
 - Problems reported with PhoneGap Build in the past:
   - PhoneGap Build Hydration.

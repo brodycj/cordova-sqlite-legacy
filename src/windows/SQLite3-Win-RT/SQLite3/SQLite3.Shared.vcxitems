@@ -10,10 +10,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory);$(MSBuildThisFileDirectory)..\..\..\common</AdditionalIncludeDirectories>
+      <AdditionalOptions>/DSQLITE_TEMP_STORE=2 /DSQLITE_THREADSAFE=2 /DSQLITE_ENABLE_FTS3 /DSQLITE_ENABLE_FTS3_PARENTHESIS /DSQLITE_ENABLE_FTS4 /DSQLITE_ENABLE_COLUMN_METADATA /DSQLITE_ENABLE_RTREE /DSQLITE_OS_WINRT %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\common\sqlite3.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Constants.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Database.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Statement.h" />
