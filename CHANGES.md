@@ -1,5 +1,9 @@
 # Changes
 
+## 1.3.3-notice
+
+- Add notice that this package is no longer supported on NPM
+
 ## 1.3.2
 
 - Drop requirement for internal qid JSON field in WP8 version

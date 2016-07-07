@@ -1,3 +1,7 @@
+# NOTICE: Package no longer supported on NPM
+
+Updates are available at: https://github.com/litehelpers/Cordova-sqlite-legacy-build-support
+
 # Cordova/PhoneGap sqlite storage adapter (legacy version)
 
 Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, WP8, Windows 8.1, Windows Phone 8.1, and Windows 10 UWP (Universal Windows Platform), with API similar to HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/).
