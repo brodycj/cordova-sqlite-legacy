@@ -1,6 +1,10 @@
 # Changes
 
-## 1.3.2
+## cordova-sqlite-legacy-build-support 1.3.3-pre1
+
+- Update docs
+
+## cordova-sqlite-legacy 1.3.2
 
 - Drop requirement for internal qid JSON field in WP8 version
 
@@ -46,12 +50,12 @@
 - Specify minimum Cordova version 6.0.0
 - Lawnchair adapter fix: Changed remove method to work with key array
 
-## 1.3.1
+## cordova-sqlite-legacy 1.3.1
 
 - Include Windows 10 UWP support (along with Windows 8.1 and Windows Phone 8.1 build)
 - Drop support for WP7 (WP7 was never tested)
 
-## 1.3.0
+## cordova-sqlite-legacy 1.3.0
 
 ### cordova-sqlite-storage 1.2.0
 

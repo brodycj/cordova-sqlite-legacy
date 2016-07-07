@@ -1,4 +1,4 @@
-# Cordova/PhoneGap sqlite storage adapter (legacy version)
+# Cordova/PhoneGap sqlite legacy build support
 
 Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, WP8, Windows 8.1, Windows Phone 8.1, and Windows 10 UWP (Universal Windows Platform), with API similar to HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/).
 
@@ -8,7 +8,7 @@ License for iOS version: MIT only
 
 |Android CI (**full** suite)|iOS CI (*very* limited suite)|
 |-----------------------|----------------------|
-|[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy.svg)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy)|
+|[![Circle CI](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy-build-support.svg?style=svg)](https://circleci.com/gh/litehelpers/Cordova-sqlite-legacy-build-support)|[![Build Status](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy-build-support.svg)](https://travis-ci.org/litehelpers/Cordova-sqlite-legacy-build-support)|
 
 ## BREAKING CHANGE: Database location parameter is now mandatory
 
@@ -59,7 +59,7 @@ Some other projects by [@brodybits](https://github.com/brodybits):
 ## Status
 
 - A recent version of the Cordova CLI (such as `6.2.0`) is recommended. Cordova versions older than `6.0.0` are missing the `cordova-ios@4.0.0` security fixes.
-- This version is *not* tested with PhoneGap Build. PhoneGap Build is supported for [litehelpers / Cordova-sqlite-evcore-extbuild-free](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free) (available with GPL or commercial license options).
+- Testing with PhoneGap Build is *very* limited. PhoneGap Build is actively supported for [litehelpers / Cordova-sqlite-evcore-extbuild-free](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free) (available with GPL or commercial license options). The following resource describes how to use this plugin from git in PhoneGap Build: <http://phonegap.com/blog/2016/02/16/git-plugins/>
 - The iOS database location is now mandatory, as documented below.
 - SQLite version `3.8.10.2` is supported for all supported platforms Android/iOS/Windows.
 - This version supports the use of two (2) possible Android sqlite database implementations:
@@ -715,7 +715,7 @@ Documentation at: http://ngcordova.com/docs/plugins/sqlite/
 
     npm install -g cordova # (in case you don't have cordova)
     cordova create MyProjectFolder com.my.project MyProject && cd MyProjectFolder # if you are just starting
-    cordova plugin add https://github.com/litehelpers/Cordova-sqlite-legacy
+    cordova plugin add https://github.com/litehelpers/Cordova-sqlite-legacy-build-support
 
 **CLI NOTES:**
 
@@ -739,10 +739,9 @@ cordova platform add ios
 
 You can find some more details in a nice writeup (though with old links and package names): <http://iphonedevlog.wordpress.com/2014/04/07/installing-chris-brodys-sqlite-database-with-cordova-cli-android/>.
 
-## Installation sources
+## Installation source
 
-- https://github.com/litehelpers/Cordova-sqlite-legacy - latest version
-- `cordova-sqlite-legacy` - stable npm package version
+- https://github.com/litehelpers/Cordova-sqlite-legacy-build-support - latest version
 
 ## Source tree
 
@@ -835,7 +834,7 @@ Please include the following:
 ## Where to ask for help
 
 Once you have followed the directions above, you may request free support in the following location(s):
-- [litehelpers / Cordova-sqlite-legacy / issues](https://github.com/litehelpers/Cordova-sqlite-legacy/issues)
+- [litehelpers / https://github.com/litehelpers/Cordova-sqlite-legacy-build-support / issues](https://github.com/litehelpers/https://github.com/litehelpers/Cordova-sqlite-legacy-build-support/issues)
 - [litehelpers / Cordova-sqlite-help](https://github.com/litehelpers/Cordova-sqlite-help)
 
 Please include the information described above otherwise.

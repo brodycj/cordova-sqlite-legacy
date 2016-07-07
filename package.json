@@ -1,9 +1,9 @@
 {
-  "name": "cordova-sqlite-legacy",
-  "version": "1.3.2",
-  "description": "Native interface to SQLite for PhoneGap/Cordova (legacy version)",
+  "name": "cordova-sqlite-legacy-build-support",
+  "version": "1.3.3-pre1",
+  "description": "Native interface to SQLite for PhoneGap/Cordova (legacy build support)",
   "cordova": {
-    "id": "cordova-sqlite-legacy",
+    "id": "cordova-sqlite-legacy-build-support",
     "platforms": [
       "android",
       "ios",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/litehelpers/Cordova-sqlite-legacy.git"
+    "url": "https://github.com/litehelpers/Cordova-sqlite-legacy-build-support.git"
   },
   "keywords": [
     "sqlite",
@@ -26,7 +26,8 @@
   "author": "various",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/litehelpers/Cordova-sqlite-legacy/issues"
+    "url": "https://github.com/litehelpers/Cordova-sqlite-legacy-build-support/issues"
   },
-  "homepage": "https://github.com/litehelpers/Cordova-sqlite-legacy"
+  "private": true,
+  "homepage": "https://github.com/litehelpers/Cordova-sqlite-legacy-build-support"
 }
