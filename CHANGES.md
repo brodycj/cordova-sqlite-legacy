@@ -1,6 +1,6 @@
 # Changes
 
-## cordova-sqlite-legacy-build-support 1.3.3-pre2
+## cordova-sqlite-legacy-build-support 1.3.3
 
 - Update docs
 
