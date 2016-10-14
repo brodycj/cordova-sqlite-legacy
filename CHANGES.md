@@ -1,5 +1,9 @@
 # Changes
 
+## cordova-sqlite-legacy-build-support 1.3.4
+
+- Signal an error in case of SQL with too many parameter argument values on WP8 (in addition to the other platforms)
+
 ## cordova-sqlite-legacy-build-support 1.3.3
 
 - Update docs

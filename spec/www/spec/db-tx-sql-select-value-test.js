@@ -1661,7 +1661,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + "SELECT X'40414243'", function(done) {
-          if (isWP8) pending('SKIP for WP8'); // [BROKEN: CRASH with uncaught exception]
+          if (isWP8) pending('SKIP for WP8'); // [BROKEN: ...]
           if (!isWebSql && isAndroid && isImpl2) pending('SKIP: BROKEN for androidDatabaseImplementation: 2');
           if (isWindows) pending('SKIP: BROKEN for Windows');
 

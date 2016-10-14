@@ -12,7 +12,7 @@ License for iOS/macOS version: MIT only
 
 ## About this version
 
-_Legacy build support version with support for WP8 in addition to Android, iOS, macOS, and Windows_
+Legacy build support version with support for WP8 in addition to Android, iOS, macOS, and Windows
 
 <!-- END About this version -->
 
@@ -115,8 +115,8 @@ See the [Sample section](#sample) for a sample with a more detailed explanation.
   - default: lightweight [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector)
   - optional: built-in Android database classes (usage described below)
 - The following features are available in [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext):
-  - REGEXP support (Android/iOS)
-  - Pre-populated database (Android/iOS/Windows)
+  - REGEXP support (Android/iOS/macOS)
+  - Pre-populated database (Android/iOS/macOS/Windows)
 - Windows version (using a customized version of the performant C++ [doo / SQLite3-WinRT](https://github.com/doo/SQLite3-WinRT) component) has the following known limitations:
   - Issue with UNICODE `\u0000` character (same as `\0`)
   - No background processing
@@ -128,7 +128,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation.
   - Windows version may crash in certain cases when invalid (bogus) function parameters are given, for example: `db.readTransaction('bogus');`
 - Status for the other target platforms:
   - Android: now using [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) (with sqlite `3.8.10.2` embedded in [Android-sqlite-native-driver](https://github.com/liteglue/Android-sqlite-native-driver)), with support for FTS3/FTS4 and R-Tree
-  - _iOS/macOS_: sqlite `3.8.10.2` embedded
+  - iOS/macOS: sqlite `3.8.10.2` embedded
   - WP8: performance/stability issues have been reported with the CSharp-SQLite library. Windows (UWP) platform is recommended for the future. FTS3/FTS4/R-Tree are NOT supported for WP8.
 - macOS version ("osx" platform) has not been tested in a release build and should be considered pre-alpha.
 - FTS3, FTS4, and R-Tree are *not* supported for WP8
@@ -143,7 +143,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation.
 - macOS ("osx" platform) is now supported
 - The [brodybits / Cordova-sqlite-bootstrap-test](https://github.com/brodybits/Cordova-sqlite-bootstrap-test) project is a CC0 (public domain) starting point to reproduce issues with this plugin and may be used as a quick way to start developing a new app.
 - New [litehelpers / Cordova-sqlite-evcore-extbuild-free](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free) version with Android JSON and SQL statement handling implemented in C, as well as support for PhoneGap Build, Intel XDK, etc., available with GPL or commercial license options. Handles large SQL batches in less than half the time as this version.
-- Windows 8.1/Windows Phone 8.1/Windows 10 version is available **here** (_with_ WP8 support) as well as in [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) (with pre-populated database support) and [litehelpers / Cordova-sqlite-storage](https://github.com/litehelpers/Cordova-sqlite-storage).
+- Windows 8.1/Windows Phone 8.1/Windows 10 version is available **here** (with WP8 support) as well as in [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) (with pre-populated database support) and [litehelpers / Cordova-sqlite-storage](https://github.com/litehelpers/Cordova-sqlite-storage).
 - Android version is again using the lightweight [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) by default configuration (may be changed as described below)
 - Self-test functions to verify proper installation and operation of this plugin
 - More explicit `openDatabase` and `deleteDatabase` `iosDatabaseLocation` option
@@ -403,7 +403,7 @@ See **Security of sensitive data** in the [Security](#security) section above.
 - Memory issue observed when adding a large number of records due to the JSON implementation which is improved in [litehelpers / Cordova-sqlite-evcore-extbuild-free](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free) (available with GPL or commercial license options)
 - Infinity (positive or negative) values are not supported on Android/iOS/macOS due to issues described above including a possible crash on iOS/macOS ref: [litehelpers/Cordova-sqlite-storage#405](https://github.com/litehelpers/Cordova-sqlite-storage/issues/405)
 - A stability issue was reported on the iOS version when in use together with [SockJS](http://sockjs.org/) client such as [pusher-js](https://github.com/pusher/pusher-js) at the same time (see [litehelpers/Cordova-sqlite-storage#196](https://github.com/litehelpers/Cordova-sqlite-storage/issues/196)). The workaround is to call sqlite functions and [SockJS](http://sockjs.org/) client functions in separate ticks (using setTimeout with 0 timeout).
-- Possible crash on Android when using Unicode emoji _and other 4-octet UTF-8_ characters due to [Android bug 81341](https://code.google.com/p/android/issues/detail?id=81341), which *should* be fixed in Android 6.x
+- Possible crash on Android when using Unicode emoji and other 4-octet UTF-8 characters due to [Android bug 81341](https://code.google.com/p/android/issues/detail?id=81341), which *should* be fixed in Android 6.x
 - Close/delete database bugs described below.
 - When a database is opened and deleted without closing, the iOS/macOS version is known to leak resources.
 - It is NOT possible to open multiple databases with the same name but in different locations (iOS/macOS).
