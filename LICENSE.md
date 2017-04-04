@@ -12,7 +12,9 @@ MIT or Apache 2.0
 
 MIT only
 
-## Windows (8.1) version
+based on Phonegap-SQLitePlugin by @davibe (Davide Bertola <dade@dadeb.it>) and @joenoon (Joe Noon <joenoon@gmail.com>)
+
+## Windows version
 
 MIT or Apache 2.0
 
@@ -31,3 +33,7 @@ MIT or Apache 2.0
 ### C#-SQLite
 
 MIT License
+
+## SQLite3
+
+Public domain
