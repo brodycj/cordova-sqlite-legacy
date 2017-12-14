@@ -1,9 +1,9 @@
 {
-  "name": "cordova-sqlite-legacy-build-support",
+  "name": "cordova-sqlite-legacy",
   "version": "1.3.6",
   "description": "Native interface to SQLite for PhoneGap/Cordova (legacy build support)",
   "cordova": {
-    "id": "cordova-sqlite-legacy-build-support",
+    "id": "cordova-sqlite-legacy",
     "platforms": [
       "android",
       "ios",
@@ -30,7 +30,6 @@
   "bugs": {
     "url": "https://github.com/litehelpers/Cordova-sqlite-legacy-build-support/issues"
   },
-  "private": true,
   "homepage": "https://github.com/litehelpers/Cordova-sqlite-legacy-build-support",
   "scripts": {
     "start": "node scripts/prepareSpec.js"

@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-legacy 1.3.6
+
+- Version for npm publish
+
 ## cordova-sqlite-legacy-build-support 1.3.6
 
 ##### cordova-sqlite-legacy-core 1.0.6
