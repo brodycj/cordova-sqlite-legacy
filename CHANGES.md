@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-legacy 2.0.0
+
+- New cordova-sqlite-legacy plugin version branch based on cordova-sqlite-ext (0.10.7), with support added for Windows 8.1 and Windows Phone 8.1
+
 ## cordova-sqlite-ext 0.10.7
 
 - cordova-sqlite-ext build flag fixes:
