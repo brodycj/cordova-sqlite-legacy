@@ -132,7 +132,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation.
   - REGEXP for Android (default Android-sqlite-connector database implementation), iOS, and macOS using [brodybits / sqlite3-regexp-cached](https://github.com/brodybits/sqlite3-regexp-cached) (based on <http://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git> by Alexey Tourbin, public domain)
   - DEPRECATED and WILL BE REMOVED in the near future: BLOB data reading (from pre-populated database) for Android/iOS, with the following caveat for the Android version: the database must be opened with the `androidDatabaseImplementation: 2` option to use the built-in android.database implementation. **RECOMMENDED SOLUTION**: use SELECT BASE64(column) to SELECT BLOB data as described below (WITHOUT use of the `androidDatabaseImplementation: 2` setting).
 - SQLite version `3.15.2` included when building with the following build settings:
-  - `SQLITE_THREADSAFE=2` on iOS/macOS (`SQLITE_THREADSAFE=1` on Android/Windows)
+  - `SQLITE_THREADSAFE=1`
   - `SQLITE_DEFAULT_MEMSTATUS=0` (iOS/macOS only)
   - `SQLITE_OMIT_DECLTYPE` (iOS/macOS only)
   - `SQLITE_OMIT_DEPRECATED` (iOS/macOS only)

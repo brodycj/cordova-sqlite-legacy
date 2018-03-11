@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-legacy 2.0.1
+
+- cordova-sqlite-legacy with SQLITE_THREADSAFE=1 for iOS/macOS ref: litehelpers/Cordova-sqlite-storage#754 (<https://github.com/litehelpers/Cordova-sqlite-storage/issues/754>)
+
 # cordova-sqlite-legacy 2.0.0
 
 - New cordova-sqlite-legacy plugin version branch based on cordova-sqlite-ext (0.10.7), with support added for Windows 8.1 and Windows Phone 8.1
