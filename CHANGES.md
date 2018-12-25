@@ -1,5 +1,7 @@
 # Changes
 
+# cordova-sqlite-legacy 2.1.0-dev
+
 # cordova-sqlite-legacy 2.0.1
 
 - cordova-sqlite-legacy with SQLITE_THREADSAFE=1 for iOS/macOS ref: litehelpers/Cordova-sqlite-storage#754 (<https://github.com/litehelpers/Cordova-sqlite-storage/issues/754>)
