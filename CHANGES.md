@@ -2,6 +2,8 @@
 
 # cordova-sqlite-legacy 2.0.2
 
+- SQLITE_DEFAULT_SYNCHRONOUS=3 on iOS/macOS/Windows
+
 ##### cordova-sqlite-legacy-core 1.0.7
 
 - Add error info text in case of close error on Windows
