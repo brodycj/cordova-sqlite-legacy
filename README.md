@@ -14,6 +14,8 @@ This plugin version branch uses a `before_plugin_install` hook to install sqlite
 
 **NOTICE:** WP8 is no longer supported by this plugin version. WP8 supported in [brodybits / cordova-sqlite-legacy-build-support](https://github.com/brodybits/cordova-sqlite-legacy-build-support).
 
+**ADDITIONAL NOTICE:** This plugin version has a known vulnerability, solved by SQLite 3.26.0, and is missing `SQLITE_DEFAULT_SYNCHRONOUS=3` (extra durable) build setting.
+
 <!-- FUTURE TBD other version-specific bug notices -->
 
 <!-- END About this plugin version branch -->
