@@ -2,7 +2,7 @@
 
 # cordova-sqlite-legacy 3.0.0-dev
 
-TBD
+- Rename SQLite3.UWP to SQLite3.UWP-legacy in this plugin version
 
 # cordova-sqlite-legacy 2.0.2
 
