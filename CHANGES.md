@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-legacy 3.0.0-dev
+
+TBD
+
 # cordova-sqlite-legacy 2.0.2
 
 - SQLITE_DEFAULT_SYNCHRONOUS=3 on iOS/macOS/Windows
