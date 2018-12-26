@@ -1,10 +1,12 @@
-# Cordova/PhoneGap sqlite storage adapter - legacy plugin version with limited extra features
+# Cordova/PhoneGap sqlite storage adapter - legacy plugin version with limited extra features - limited maintenance
 
 Native interface to sqlite in a Cordova/PhoneGap plugin for Android/iOS/macOS/Windows, with API similar to HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/).
 
 License terms for Android and Windows platform versions: MIT or Apache 2.0
 
 License terms for iOS/macOS platform version: MIT only
+
+MAINTENANCE STATUS: maintenance of this plugin version will be very limited, please see [litehelpers/cordova-sqlite-legacy#18](https://github.com/litehelpers/cordova-sqlite-legacy/issues/18) for more information.
 
 ## About this plugin version branch
 
