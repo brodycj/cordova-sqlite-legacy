@@ -16,7 +16,7 @@ This plugin version branch uses a `before_plugin_install` hook to install sqlite
 
 **NOTICE:** WP8 is no longer supported by this plugin version. WP8 supported in [brodybits / cordova-sqlite-legacy-build-support](https://github.com/brodybits/cordova-sqlite-legacy-build-support).
 
-**ADDITIONAL NOTICE:** This plugin version has a known vulnerability, solved by SQLite 3.26.0, and is missing `SQLITE_DEFAULT_SYNCHRONOUS=3` (extra durable) build setting.
+**ADDITIONAL NOTICE:** This plugin version has a known vulnerability, solved by SQLite 3.26.0, and is missing `SQLITE_DEFAULT_SYNCHRONOUS=3` (extra durable) build setting on Android.
 
 <!-- FUTURE TBD other version-specific bug notices -->
 
@@ -138,6 +138,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation.
   - DEPRECATED and WILL BE REMOVED in the near future: BLOB data reading (from pre-populated database) for Android/iOS, with the following caveat for the Android version: the database must be opened with the `androidDatabaseImplementation: 2` option to use the built-in android.database implementation. **RECOMMENDED SOLUTION**: use SELECT BASE64(column) to SELECT BLOB data as described below (WITHOUT use of the `androidDatabaseImplementation: 2` setting).
 - SQLite version `3.15.2` included when building with the following build settings:
   - `SQLITE_THREADSAFE=1`
+  - `SQLITE_DEFAULT_SYNCHRONOUS=3` (EXTRA DURABLE build setting) on iOS/macOS/Windows ref: [litehelpers/Cordova-sqlite-storage#736](https://github.com/litehelpers/Cordova-sqlite-storage/issues/736)
   - `SQLITE_DEFAULT_MEMSTATUS=0`
   - `SQLITE_OMIT_DECLTYPE`
   - `SQLITE_OMIT_DEPRECATED`
