@@ -12,7 +12,7 @@ MAINTENANCE STATUS: maintenance of this plugin version will be very limited, ple
 
 Plugin version with legacy support for Windows 8.1 / Windows Phone 8.1, along with limited extra features: REGEXP (Android/iOS/macOS), BASE64, and pre-populated databases
 
-This plugin version branch uses a `before_plugin_install` hook to install sqlite3 library dependencies from `cordova-sqlite-storage-dependencies` via npm.
+This plugin version branch uses a `before_plugin_install` hook to install sqlite3 library dependencies from `cordova-sqlite-ext-deps` via npm.
 
 **NOTICE:** WP8 is no longer supported by this plugin version. WP8 supported in [brodybits / cordova-sqlite-legacy-build-support](https://github.com/brodybits/cordova-sqlite-legacy-build-support).
 
