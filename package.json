@@ -1,6 +1,6 @@
 {
   "name": "cordova-sqlite-legacy",
-  "version": "3.0.0-dev",
+  "version": "3.0.0",
   "description": "Native interface to SQLite for PhoneGap/Cordova - legacy plugin version with limited extra features",
   "cordova": {
     "id": "cordova-sqlite-legacy",
