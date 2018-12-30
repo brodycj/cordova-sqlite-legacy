@@ -2,6 +2,7 @@
 
 # cordova-sqlite-legacy 3.0.0-dev
 
+- Use #if 0 for __has_feature(objc_arc) blocks (iOS)
 - SQLite 3.26.0 with build flag & other updates, using cordova-sqlite-ext-deps@1.1.1 (BLOB values are no longer automatically converted to Base64 format, as documented)
 - Rename SQLite3.UWP to SQLite3.UWP-legacy in this plugin version
 

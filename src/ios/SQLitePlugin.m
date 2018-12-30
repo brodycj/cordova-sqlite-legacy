@@ -42,7 +42,8 @@
     {
         openDBs = [PSPDFThreadSafeMutableDictionary dictionaryWithCapacity:0];
         appDBPaths = [NSMutableDictionary dictionaryWithCapacity:0];
-#if !__has_feature(objc_arc)
+#if 0 // XXX GONE:
+// #if !__has_feature(objc_arc)
         [openDBs retain];
         [appDBPaths retain];
 #endif
@@ -442,7 +443,8 @@
                             columnValue = [[NSString alloc] initWithBytes:(char *)sqlite3_column_text(statement, i)
                                                                    length:sqlite3_column_bytes(statement, i)
                                                                  encoding:NSUTF8StringEncoding];
-#if !__has_feature(objc_arc)
+#if 0 // XXX GONE:
+// #if !__has_feature(objc_arc)
                             [columnValue autorelease];
 #endif
                             break;
@@ -562,7 +564,8 @@
         sqlite3_close (db);
     }
 
-#if !__has_feature(objc_arc)
+#if 0 // XXX GONE:
+// #if !__has_feature(objc_arc)
     [openDBs release];
     [appDBPaths release];
     [super dealloc];
