@@ -1830,12 +1830,9 @@ var mytests = function() {
               //expect(rs.rows.item(0).myresult).toBe('@ABC');
               var row = rs.rows.item(0);
               expect(row).toBeDefined();
-              if (isWebSql || (isAndroid && !isImpl2))
+              // if (isWebSql || (isAndroid && !isImpl2))
                 expect(row.myresult).toBe('@ABC');
-              else if (isAndroid)
-                expect(row.myresult).toBe('QEFCQw==\n'); // [...]
-              else
-                expect(row.myresult).toBe('QEFCQw==');
+              // else ...
 
               // Close (plugin only) & finish:
               (isWebSql) ? done() : db.close(done, done);

@@ -16,8 +16,8 @@
 
 #import "PSPDFThreadSafeMutableDictionary.h"
 
-// XXX FUTURE TBD OBSOLETE:
-#define READ_BLOB_AS_BASE64
+// XXX GONE:
+// #define READ_BLOB_AS_BASE64
 
 // XXX TODO GONE:
 //#define INCLUDE_SQL_BLOB_BINDING
@@ -430,7 +430,7 @@
                             columnValue = [NSNumber numberWithDouble: sqlite3_column_double(statement, i)];
                             break;
                         case SQLITE_BLOB:
-#ifdef READ_BLOB_AS_BASE64 // XXX FUTURE TBD OBSOLETE
+#if 0 // XXX GONE:
                             columnValue = [SQLitePlugin getBlobAsBase64String: sqlite3_column_blob(statement, i)
                                                         withLength: sqlite3_column_bytes(statement, i)];
 #ifdef INCLUDE_SQL_BLOB_BINDING // TBD subjet to change:
@@ -608,8 +608,8 @@
     }
 }
 
-// XXX FUTURE TBD OBSOLETE:
-#ifdef READ_BLOB_AS_BASE64
+// XXX GONE:
+#if 0
 +(NSString*)getBlobAsBase64String:(const char*)blob_chars
                        withLength:(int)blob_length
 {
